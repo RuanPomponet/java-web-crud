@@ -31,7 +31,7 @@ public class DocumentoController {
 		return mv;		
 	}
 	
-	@PostMapping("/Salvar")
+	@PostMapping("/salvar")
 	public ModelAndView salvarDocumento(Documento documento) {
 		service.save(documento);
 		return listarDocumentos();
@@ -40,7 +40,7 @@ public class DocumentoController {
 	@GetMapping("/alterar/{id}")
 	public ModelAndView alterarDocumento(@PathVariable("id") Integer id) throws ObjectNotFoundException{
 		ModelAndView mv = new ModelAndView("documento/alteraDocumento");
-		mv.addObject("documento", new Documento());
+		mv.addObject("documento", service.search(id));
 		return mv;		
 	}
 	@PostMapping("/alterar")
